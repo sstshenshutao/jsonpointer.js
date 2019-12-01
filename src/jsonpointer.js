@@ -131,7 +131,6 @@
 
         // |target| is already parsed, let's create evaluator function for it.
         var setter = createPointerSetter(target);
-        // setter = bb(target, newPointer);
         if (isUndefined(newPointer)) {
             // If pointer was not provided, return evaluator function.
             return false;
@@ -189,39 +188,6 @@
             return value;
         };
     }
-
-    function bb(target, pointer) {
-        var cache = {};
-        if (!isValidJSONPointer(pointer)) {
-            // If it's not, an exception will be thrown.
-            throw getError(ErrorMessage.INVALID_POINTER);
-        }
-
-        // First, look up in the cache.
-        if (cache.hasOwnProperty(pointer)) {
-            // If cache entry exists, return it's value.
-            return cache[pointer];
-        }
-
-        // Now, when all arguments are valid, we can start evaluation.
-        // First of all, let's convert JSON pointer string to tokens list.
-        var tokensList = parsePointer(pointer);
-        var token;
-        var value = target;
-        var size = tokensList.length;
-        // Evaluation will be continued till tokens list is not empty
-        // and returned value is not an undefined.
-        for (let i = 0; i < size; i++) {
-            let nextValue = getValue(value, token = tokensList.pop());
-            if (isUndefined(nextValue)) {
-                value[token] = {};
-            }
-            value = value[token];
-        }
-        // Pointer evaluation is done, save value in the cache and return it.
-        cache[pointer] = value;
-        return value;
-    };
 
 
     function createPointerSetter(target) {
