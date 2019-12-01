@@ -1,9 +1,9 @@
 {
-  "name": "jsonpointer.js",
-  "description": "JavaScript implementation of JSON Pointer",
+  "name": "jsonpointer.js.setter",
+  "description": "JavaScript implementation of JSON Pointer add setter",
   "author": {
-    "name": "Alexey Kuzmin",
-    "email": "alex.s.kuzmin@gmail.com"
+    "name": "shutao shen",
+    "email": "sstbage@gmail.com"
   },
   "version": "0.4.0",
   "preferGlobal": false,

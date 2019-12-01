@@ -104,6 +104,13 @@
         }
     }
 
+    /**
+     * @author shutao.shen
+     * @param target
+     * @param opt_pointer
+     * @param value
+     * @returns {boolean}
+     */
     function setPointedValue(target, opt_pointer, value) {
         // .set() method implementation.
         let pointerList = parsePointer(opt_pointer).reverse();
@@ -189,7 +196,11 @@
         };
     }
 
-
+    /**
+     * @author shutao shen
+     * @param target
+     * @returns {Function}
+     */
     function createPointerSetter(target) {
 
         // Use cache to store already received values.
